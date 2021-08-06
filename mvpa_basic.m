@@ -7,7 +7,7 @@ test.
 
 addpath('../cbrewer/') % need this if you don't have it: https://www.mathworks.com/matlabcentral/fileexchange/34087-cbrewer-colorbrewer-schemes-for-matlab
 
-datasplit = 'evenodd'; % evenodd, leaveoneout
+datasplit = 'evenodd'; % evenodd, halfcombos
 roitype = 'tstat';
 do_cocktail_blank = 1;
 cocktail_approach = 'bysplit'; % global (global pattern across all splits) or bysplit (subtract even for even, odd for odd)
