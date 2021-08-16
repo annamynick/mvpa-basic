@@ -5,7 +5,7 @@ function plot_mvpa_within_across(plot_mats,roilabels)
 addpath('../sigstar') % need this if you don't have it https://www.mathworks.com/matlabcentral/fileexchange/39696-raacampbell-sigstar
 
 % perform setup
-nsubjects = size(plot_mats,4); % m1, m2, hemi, studycond, roi, subject
+nsubjects = size(plot_mats,4); % m1, m2, hemi, roi, subject
 mdim = size(plot_mats,1);
 nrois = size(plot_mats,3);
 
