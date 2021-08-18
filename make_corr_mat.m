@@ -17,10 +17,13 @@ if ~exist('do_cocktail_blank','var')
     do_cocktail_blank = '0';
 end
 
+nruns = size(data,3);
+nconds = size(data,2);
+
 switch datasplit
     case 'evenodd'
-        odd = data(:,:,[1:2:8]); % nvoxels x nconditions x nruns
-        even = data(:,:,[2:2:8]);
+        odd = data(:,:,[1:2:nruns]); % nvoxels x nconditions x nruns
+        even = data(:,:,[2:2:nruns]);
         if size(even) ~= size(odd)
             error('even and odd matrices are different sizes')
         end
@@ -46,8 +49,7 @@ switch datasplit
         corr_mat = (corr(mean_odd, mean_even, 'type', 'spearman') + corr(mean_even, mean_odd, 'type', 'spearman'))/2;
         
     case 'halfcombos'
-        nruns = size(data,3);
-        nconds = size(data,2);
+        
         
         % splits are run x split mtx
         half1_splits = nchoosek(1:nruns,nruns/2);
@@ -80,29 +82,3 @@ switch datasplit
         
 end % end datasplit
 end % end function
-
-function [cb_a,cb_b] = cocktail_blank(a,b,cocktail_approach)
-%{
-Perform cocktail blank demeaning on two data sets, each nvoxels x
-nconditions x nruns. Cocktail approach specifies whether cocktail blanking
-occurs across all runs (most common in resting state), by split (e.g. even
-- mean(even), odd - mean(odd)) or per run.
-%}
-
-switch cocktail_approach
-    case 'global'
-        mean_across_conditions = mean(data,[2 3]);
-        cb_a = a - mean_across_conditions;
-        cb_b = b - mean_across_conditions;
-    case 'bysplit'
-        cb_a = a-mean(a,[2,3]);
-        cb_b = b-mean(b,[2,3]);
-    case 'perrun' % seems to eventually produce the same thing as bysplit;
-        cb_a = nan*zeros(size(a));
-        cb_b = nan*zeros(size(b));
-        for r = 1:size(a,3)
-            cb_a(:,:,r) = a(:,:,r) - mean(a(:,:,r),2);
-            cb_b(:,:,r) = b(:,:,r) - mean(b(:,:,r),2);
-        end
-end
-end

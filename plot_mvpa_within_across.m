@@ -11,7 +11,7 @@ nrois = size(plot_mats,3);
 
 % calculate within v. across for each subject
 wa_mat = nan*zeros(nsubjects,2,nrois); % subject x [within across] x roi
-sig_mat = nan*zeros(nrois,1);
+sig_mat = nan*zeros(nrois,1); % holds the p-values resulting from t-tests that compare within v. across for each roi. 
 
 for r = 1:nrois
     for s = 1:nsubjects
