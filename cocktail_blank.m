@@ -1,4 +1,4 @@
-function [cb_a,cb_b] = cocktail_blank(a,b,cocktail_approach)
+ons function [cb_a,cb_b] = cocktail_blank(a,b,cocktail_approach)
 %{
 Perform cocktail blank demeaning on two data sets, each nvoxels x
 nconditions x nruns. Cocktail approach specifies whether cocktail blanking
