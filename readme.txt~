@@ -19,7 +19,7 @@ plot_mvpa_within_across.m: function called by mvpa_basic. Takes a 4-dimension st
 
 calculate_within_across.m: function called by plot_mvpa_within_across. Given a correlation matrix, calculate the average within versus across values (i.e. diagonal versus off diagonal), and return a 2x1 array [within across]. 
 
-cocktail_blank.m: function called by make_corr_mat. Takes two sets of data (e.g. data from even runs (a), data from odd runs (b)) and performs cocktail_blank demeaning (subtracting each voxels' average response across conditions) and an approach: global (a and b get the same values subtracted), bysplit (even gets its own average subtracted, odd gets its own subtracted) or perrun (same as bysplit, but done on each run)
+cocktail_blank.m: function called by make_corr_mat. Takes two sets of data (e.g. data from e
 
 
   
